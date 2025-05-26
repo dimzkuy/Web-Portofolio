@@ -34,6 +34,25 @@ export default function Portfolio() {
     AOS.init({ duration: 1000, once: true }); // Inisialisasi AOS
   }, []);
 
+  // Tambahkan fungsi resetHome di dalam komponen Portfolio
+  const resetHome = () => {
+    // Reset state typing animation
+    setTextIndex(0);
+    setCharIndex(0);
+    setIsDeleting(false);
+    
+    // Scroll ke posisi paling atas dengan smooth animation
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+    
+    // Optional: Re-trigger AOS animations
+    setTimeout(() => {
+      AOS.refresh();
+    }, 500);
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#1518C6] to-[#6A5ACD] font-poppins">
       {/* Navigation */}
@@ -46,7 +65,15 @@ export default function Portfolio() {
 
           {/* Navigation Links (Desktop) */}
           <div className="hidden md:flex items-center space-x-8">
-            <Link href="#home" className="font-regular transition-colors hover:text-[#1518C6]" style={{ color: "#FFFFFF" }}>
+            <Link 
+              href="#home" 
+              className="font-regular transition-colors hover:text-[#1518C6]" 
+              style={{ color: "#FFFFFF" }}
+              onClick={(e) => {
+                e.preventDefault(); // Mencegah scroll default ke anchor #home
+                resetHome();
+              }}
+            >
               Home
             </Link>
             <Link href="#about" className="font-regular transition-colors hover:text-[#1518C6]" style={{ color: "#FFFFFF" }}>
@@ -88,7 +115,11 @@ export default function Portfolio() {
             <Link
               href="#home"
               className="font-regular transition-colors hover:text-[#1518C6] text-white"
-              onClick={() => setIsMenuOpen(false)}
+              onClick={(e) => {
+                e.preventDefault(); // Mencegah perilaku default
+                setIsMenuOpen(false);
+                resetHome();
+              }}
             >
               Home
             </Link>
@@ -120,7 +151,7 @@ export default function Portfolio() {
       {/* Hero Section */}
       <section id="home" className="min-h-[80vh] flex flex-col items-center justify-center px-4 text-center">
         <div className="w-full max-w-4xl" data-aos="fade-up">
-          <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
+          <h1 className="text-3xl md:text-5xl font-bold text-white mb-6">
             Hi, I&apos;m{" "}
             <span className="text-white">{texts[textIndex].substring(0, charIndex)}</span>
             <span className="typeCursor" />
@@ -227,7 +258,7 @@ export default function Portfolio() {
           </h2>
 
           {/* Scrolling Logos */}
-          <div className="overflow-hidden">
+          <div className="overflow-hidden" data-aos="fade-up" data-aos-delay="200">
             <div
               className="flex items-center gap-12 animate-scroll"
               style={{ whiteSpace: "nowrap" }}
@@ -270,97 +301,6 @@ export default function Portfolio() {
           </div>
         </div>
       </section>
-
-      {/* Global Styles */}
-      <style jsx global>{`
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
-
-        .font-poppins {
-          font-family: 'Poppins', sans-serif;
-        }
-
-        html {
-          scroll-behavior: smooth; /* Tambahkan ini untuk transisi smooth */
-        }
-
-        .typeCursor {
-          display: inline-block;
-          width: 1px;
-          height: 1.2em;
-          margin-left: 3px;
-          background-color: #fff;
-          animation: blink 0.8s infinite;
-        }
-        @keyframes blink {
-          0%, 100% { opacity: 1; }
-          50% { opacity: 0; }
-        }
-
-        /* Tambahkan animasi turun */
-        @keyframes slideDown {
-          0% {
-            opacity: 0;
-            transform: translateY(-10%);
-          }
-          100% {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-        .slideDown {
-          animation: slideDown 0.3s ease-out forwards;
-        }
-
-        /* Efek hover khusus untuk ikon Instagram (gambar) */
-        .instagram-link:hover .instagram-img {
-          filter: invert(47%) sepia(70%) saturate(534%) hue-rotate(219deg) brightness(95%) contrast(92%);
-        }
-
-        @keyframes scroll {
-          0% {
-            transform: translateX(0);
-          }
-          100% {
-            transform: translateX(-50%);
-          }
-        }
-
-        .animate-scroll {
-          display: inline-flex;
-          width: max-content; /* Penting: membuat container mengambil lebar isi */
-          animation: scroll 20s linear infinite; /* Dipercepat dari 20s ke 10s */
-          will-change: transform; /* Optimasi performa */
-        }
-
-        .logo-slider {
-          width: 100%;
-          height: auto;
-          margin: auto;
-          overflow: hidden;
-          position: relative;
-          background: transparent;
-        }
-
-        .logo-slide-track {
-          display: flex;
-          width: calc(16px * 32); /* Width total semua logo */
-          animation: scroll 20s linear infinite;
-        }
-
-        .logo-slide {
-          width: 16px;
-          height: 16px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          padding: 15px 30px;
-        }
-
-        /* Mempercepat animasi pada hover */
-        .logo-slider:hover .logo-slide-track {
-          animation-play-state: paused;
-        }
-      `}</style>
     </div>
   );
 }

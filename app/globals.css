@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @import "tw-animate-css";
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
 
 @custom-variant dark (&:is(.dark *));
 
@@ -119,4 +120,87 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+.font-poppins {
+  font-family: 'Poppins', sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.typeCursor {
+  display: inline-block;
+  width: 1px;
+  height: 1.2em;
+  margin-left: 3px;
+  background-color: #fff;
+  animation: blink 0.8s infinite;
+}
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+@keyframes slideDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-10%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.slideDown {
+  animation: slideDown 0.3s ease-out forwards;
+}
+
+.instagram-link:hover .instagram-img {
+  filter: invert(47%) sepia(70%) saturate(534%) hue-rotate(219deg) brightness(95%) contrast(92%);
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-scroll {
+  display: inline-flex;
+  width: max-content;
+  animation: scroll 10s linear infinite;
+  will-change: transform;
+}
+
+.logo-slider {
+  width: 100%;
+  height: auto;
+  margin: auto;
+  overflow: hidden;
+  position: relative;
+  background: transparent;
+}
+
+.logo-slide-track {
+  display: flex;
+  width: calc(16px * 32);
+  animation: scroll 20s linear infinite;
+}
+
+.logo-slide {
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px 30px;
+}
+
+.logo-slider:hover .logo-slide-track {
+  animation-play-state: paused;
 }
