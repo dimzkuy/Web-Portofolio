@@ -126,7 +126,7 @@ export default function Portfolio() {
             <span className="typeCursor" />
           </h1>
           <p className="text-lg md:text-xl text-white/80 mb-8">
-            I&apos;m a Software Engineering student passionate about creating modern, functional, and user-centered digital experiences.
+          I am a software engineering student with a passion for cybersecurity and network system administration.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <a
@@ -138,25 +138,51 @@ export default function Portfolio() {
               Get In Touch
             </a>
             <a
-              href="#projects"
+              href="https://github.com/dimzkuy"
               className="flex items-center justify-center border-2 border-white text-white px-6 py-3 rounded-lg font-semibold hover:bg-white/10 transition"
               data-aos="fade-up"
               data-aos-delay="400"
+              target="_blank"
+              rel="noopener noreferrer"
             >
-              View Projects
+              <svg 
+                xmlns="http://www.w3.org/2000/svg" 
+                width="20" 
+                height="20" 
+                viewBox="0 0 24 24" 
+                fill="currentColor" 
+                className="mr-2"
+              >
+                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+              </svg>
+              View Projects on GitHub
             </a>
           </div>
         </div>
       </section>
 
       {/* About Section */}
-      <section id="about" className="py-16 bg-gradient-to-br from-[#1518C6] to-[#6A5ACD] text-white">
-        <div className="max-w-7xl mx-auto px-8 sm:px-16 lg:px-20">
-          <h2 className="text-4xl font-bold mb-8 text-center" data-aos="fade-up">
+      <section
+        id="about"
+        className="min-h-[80vh] py-16 bg-white text-[#1518C6] scroll-mt-[80px]" // Atur tinggi minimum dan scroll margin
+      >
+        <div className="max-w-6xl mx-auto px-6 sm:px-12 lg:px-16">
+          {/* Heading */}
+          <h2
+            className="text-3xl md:text-4xl font-bold mb-6 text-center bg-clip-text text-transparent bg-gradient-to-r from-[#1518C6] to-[#6A5ACD]"
+            data-aos="fade-up"
+          >
             About Me
           </h2>
-          <div className="flex flex-col lg:flex-row items-center gap-12">
-            <div className="lg:w-1/2 space-y-6" data-aos="fade-up" data-aos-delay="200">
+
+          {/* Content */}
+          <div className="flex flex-col lg:flex-row items-center gap-8">
+            {/* Text Content */}
+            <div
+              className="lg:w-1/2 space-y-4 text-sm md:text-base"
+              data-aos="fade-up"
+              data-aos-delay="200"
+            >
               <p>
                 I&apos;m a passionate full-stack developer with over 5 years of experience building web applications. I love turning complex problems into simple, beautiful, and intuitive solutions.
               </p>
@@ -167,14 +193,79 @@ export default function Portfolio() {
                 My expertise spans across modern JavaScript frameworks, backend technologies, and cloud platforms. I&apos;m particularly passionate about creating performant, accessible, and user-friendly applications.
               </p>
             </div>
-            <div className="lg:w-1/2 flex justify-center" data-aos="fade-up" data-aos-delay="400">
-              <div className="relative w-64 h-64 lg:w-80 lg:h-80 bg-gradient-to-br from-[#E0E7FF] to-[#C7D2FE] rounded-full shadow-lg flex items-center justify-center">
+
+            {/* Image */}
+            <div
+              className="lg:w-1/2 flex justify-center"
+              data-aos="fade-up"
+              data-aos-delay="400"
+            >
+              <div className="relative w-48 h-48 md:w-64 md:h-64 lg:w-72 lg:h-72 bg-gradient-to-br from-[#E0E7FF] to-[#C7D2FE] rounded-full shadow-lg flex items-center justify-center">
                 <img
                   src="/assets/img/PDD_Dimas Cahyo Margono.jpg"
                   alt="Profile Photo"
-                  className="w-80 h- lg:w-100 lg:h-100 rounded-full object-cover"
+                  className="w-full h-full rounded-full object-cover"
                 />
               </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Skills Section */}
+      <section
+        id="skills"
+        className="py-16 bg-gradient-to-br from-[#1518C6] to-[#6A5ACD] text-white"
+      >
+        <div className="max-w-7xl mx-auto px-8 sm:px-16 lg:px-20">
+          {/* Heading */}
+          <h2
+            className="text-4xl font-bold mb-8 text-center"
+            data-aos="fade-up"
+          >
+            Tools
+          </h2>
+
+          {/* Scrolling Logos */}
+          <div className="overflow-hidden">
+            <div
+              className="flex items-center gap-12 animate-scroll"
+              style={{ whiteSpace: "nowrap" }}
+            >
+              {/* Logo Items */}
+              <img src="/assets/icons/HTML.svg" alt="HTML" className="h-16 w-16" />
+              <img src="/assets/icons/CSS.svg" alt="CSS" className="h-16 w-16" />
+              <img src="/assets/icons/JavaScript.svg" alt="JavaScript" className="h-16 w-16" />
+              <img src="/assets/icons/NodeJS-Dark.svg" alt="Node.js" className="h-16 w-16" />
+              <img src="/assets/icons/Python-Dark.svg" alt="Python" className="h-16 w-16" />
+              <img src="/assets/icons/Git.svg" alt="Git" className="h-16 w-16" />
+              <img src="/assets/icons/NextJS-Dark.svg" alt="Next.js" className="h-16 w-16" />
+              <img src="/assets/icons/Flutter-Dark.svg" alt="Flutter" className="h-16 w-16" />
+              <img src="/assets/icons/Figma-Dark.svg" alt="Figma" className="h-16 w-16" />
+              <img src="/assets/icons/Postman.svg" alt="Postman" className="h-16 w-16" />
+              <img src="/assets/icons/VSCode-Dark.svg" alt="VS Code" className="h-16 w-16" />
+              <img src="/assets/icons/Bootstrap.svg" alt="Bootstrap" className="h-16 w-16" />
+              <img src="/assets/icons/PHP-Dark.svg" alt="PHP" className="h-16 w-16" />
+              <img src="/assets/icons/Dart-Dark.svg" alt="Dart" className="h-16 w-16" />
+              <img src="/assets/icons/GCP-Dark.svg" alt="Google Cloud Platform" className="h-16 w-16" />
+              <img src="/assets/icons/Debian-Dark.svg" alt="Debian" className="h-16 w-16" />
+              {/* Repeat Logos for Infinite Scroll */}
+              <img src="/assets/icons/HTML.svg" alt="HTML" className="h-16 w-16" />
+              <img src="/assets/icons/CSS.svg" alt="CSS" className="h-16 w-16" />
+              <img src="/assets/icons/JavaScript.svg" alt="JavaScript" className="h-16 w-16" />
+              <img src="/assets/icons/NodeJS-Dark.svg" alt="Node.js" className="h-16 w-16" />
+              <img src="/assets/icons/Python-Dark.svg" alt="Python" className="h-16 w-16" />
+              <img src="/assets/icons/Git.svg" alt="Git" className="h-16 w-16" />
+              <img src="/assets/icons/NextJS-Dark.svg" alt="Next.js" className="h-16 w-16" />
+              <img src="/assets/icons/Flutter-Dark.svg" alt="Flutter" className="h-16 w-16" />
+              <img src="/assets/icons/Figma-Dark.svg" alt="Figma" className="h-16 w-16" />
+              <img src="/assets/icons/Postman.svg" alt="Postman" className="h-16 w-16" />
+              <img src="/assets/icons/VSCode-Dark.svg" alt="VS Code" className="h-16 w-16" />
+              <img src="/assets/icons/Bootstrap.svg" alt="Bootstrap" className="h-16 w-16" />
+              <img src="/assets/icons/PHP-Dark.svg" alt="PHP" className="h-16 w-16" />
+              <img src="/assets/icons/Dart-Dark.svg" alt="Dart" className="h-16 w-16" />
+              <img src="/assets/icons/GCP-Dark.svg" alt="Google Cloud Platform" className="h-16 w-16" />
+              <img src="/assets/icons/Debian-Dark.svg" alt="Debian" className="h-16 w-16" />
             </div>
           </div>
         </div>
@@ -186,6 +277,10 @@ export default function Portfolio() {
 
         .font-poppins {
           font-family: 'Poppins', sans-serif;
+        }
+
+        html {
+          scroll-behavior: smooth; /* Tambahkan ini untuk transisi smooth */
         }
 
         .typeCursor {
@@ -219,6 +314,51 @@ export default function Portfolio() {
         /* Efek hover khusus untuk ikon Instagram (gambar) */
         .instagram-link:hover .instagram-img {
           filter: invert(47%) sepia(70%) saturate(534%) hue-rotate(219deg) brightness(95%) contrast(92%);
+        }
+
+        @keyframes scroll {
+          0% {
+            transform: translateX(0);
+          }
+          100% {
+            transform: translateX(-50%);
+          }
+        }
+
+        .animate-scroll {
+          display: inline-flex;
+          width: max-content; /* Penting: membuat container mengambil lebar isi */
+          animation: scroll 20s linear infinite; /* Dipercepat dari 20s ke 10s */
+          will-change: transform; /* Optimasi performa */
+        }
+
+        .logo-slider {
+          width: 100%;
+          height: auto;
+          margin: auto;
+          overflow: hidden;
+          position: relative;
+          background: transparent;
+        }
+
+        .logo-slide-track {
+          display: flex;
+          width: calc(16px * 32); /* Width total semua logo */
+          animation: scroll 20s linear infinite;
+        }
+
+        .logo-slide {
+          width: 16px;
+          height: 16px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: 15px 30px;
+        }
+
+        /* Mempercepat animasi pada hover */
+        .logo-slider:hover .logo-slide-track {
+          animation-play-state: paused;
         }
       `}</style>
     </div>
