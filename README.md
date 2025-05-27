@@ -7,8 +7,8 @@ Ini adalah proyek Web Portofolio pribadi yang menampilkan keahlian, tools, dan b
 ## 📁 Struktur File Proyek
 
 ```bash
-root/                           # Direktori utama proyek
-├── lib/                        # Folder untuk helper atau utilitas
+Web-Portofolio/                # Direktori utama proyek
+├── lib/                       # Folder untuk helper atau utilitas
 │   └── utils.js               # File utilitas JavaScript
 ├── public/                    # Folder publik untuk file statis
 │   └── assets/                # Asset statis yang digunakan
