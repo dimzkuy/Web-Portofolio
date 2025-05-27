@@ -261,9 +261,9 @@ export default function Portfolio() {
                 data-aos="fade-up"
                 data-aos-delay="400"
               >
-                <div className="relative w-48 h-48 md:w-64 md:h-64 lg:w-72 lg:h-72 bg-gradient-to-br from-[#E0E7FF] to-[#C7D2FE] rounded-full shadow-lg flex items-center justify-center">
+                <div className="relative w-80 h-80 md:w-80 md:h-80 lg:w-80 lg:h-120 bg-gradient-to-br from-[#E0E7FF] to-[#C7D2FE] rounded-full shadow-lg flex items-center justify-center">
                   <img
-                    src="/assets/img/PDD_Dimas Cahyo Margono.jpg"
+                    src="/assets/img/profile.jpg"
                     alt="Profile Photo"
                     className="w-full h-full rounded-full object-cover"
                   />
