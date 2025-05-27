@@ -291,7 +291,7 @@ export default function Portfolio() {
                 </span>
               </h2>
               <p className="text-gray-600" data-aos="fade-up" data-aos-delay="100">
-                My academic journey and educational achievements
+                My academic journey and educational activities
               </p>
             </div>
 
