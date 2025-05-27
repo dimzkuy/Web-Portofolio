@@ -73,7 +73,6 @@ cd Web-Portofolio
 
 ```bash
 npm install
-Jalankan development server
 ```
 3. Jalankan Aplikasi
 ```bash
