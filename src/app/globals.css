@@ -46,8 +46,6 @@
 
 :root {
   --radius: 0.625rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.145 0 0);
   --popover: oklch(1 0 0);
@@ -77,6 +75,8 @@
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
 }
 
 .dark {
@@ -143,22 +143,40 @@ html {
   50% { opacity: 0; }
 }
 
+/* Existing animations */
 @keyframes slideDown {
-  0% {
+  from {
     opacity: 0;
-    transform: translateY(-10%);
+    transform: translateY(-20px);
   }
-  100% {
+  to {
     opacity: 1;
     transform: translateY(0);
   }
 }
-.slideDown {
-  animation: slideDown 0.3s ease-out forwards;
+
+@keyframes slideUp {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
 }
 
-.instagram-link:hover .instagram-img {
-  filter: invert(47%) sepia(70%) saturate(534%) hue-rotate(219deg) brightness(95%) contrast(92%);
+.animate-slideDown {
+  animation: slideDown 0.3s ease forwards;
+}
+
+.animate-slideUp {
+  animation: slideUp 0.3s ease forwards;
+}
+
+/* Add padding transition class */
+.transition-padding {
+  transition: padding-top 0.3s ease;
 }
 
 @keyframes scroll {
