@@ -108,7 +108,7 @@ export default function Portfolio() {
                 href="#projects" 
                 className="font-regular relative transition-colors text-white hover:text-white after:content-[''] after:absolute after:w-0 after:h-0.5 after:bg-white after:left-0 after:right-0 after:bottom-[-4px] after:mx-auto hover:after:w-full after:transition-all"
               >
-                My Projects
+                Tools & Projects
               </Link>
               <Link
                 href="#contact"
@@ -245,10 +245,10 @@ export default function Portfolio() {
                 data-aos-delay="200"
               >
                 <p>
-                I am a student of Telkom University Purwokerto majoring in Software Engineering. I currently live in Purwokerto. I graduated from the Computer and Network Technology program at Telkom Vocational High School in Jakarta. I enjoy playing games and listening to music.
+                I am a student of Telkom University Purwokerto majoring in Software Engineering. I currently live in Purwokerto. I graduated from the Computer and Network Engineering study program at Telkom Vocational High School in Jakarta. I enjoy playing games and listening to music.
                 </p>
                 <p>
-                I have a slight interest in cybersecurity. When I was in vocational high school, I attended a boot camp in collaboration with my school. That experience encouraged and motivated me to learn more about cybersecurity.
+                I have a slight interest in cybersecurity. When I was in vocational high school, I attended a bootcamp in collaboration with my school. That experience encouraged and motivated me to learn more about cybersecurity.
                 </p>
                 <p>
                 Upon entering college, I began exploring several programming languages relevant to my major, Software Engineering, including Python, PHP, HTML, and CSS, among many others that I had to learn to sharpen my skills in the field of web development.
@@ -273,11 +273,130 @@ export default function Portfolio() {
           </div>
         </section>
 
+        {/* Education Section */}
+        <section id="education" className="py-16 bg-gray-50 text-[#1518C6] scroll-mt-[80px]">
+          <div className="max-w-6xl mx-auto px-6 sm:px-12 lg:px-16">
+            {/* Heading */}
+            <div className="mb-12 text-center">
+              <h2 
+                className="text-3xl md:text-4xl font-bold mb-3 bg-clip-text text-transparent bg-gradient-to-r from-[#1518C6] to-[#6A5ACD]"
+                data-aos="fade-up"
+              >
+                <span className="flex items-center justify-center gap-2">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-8 h-8">
+                    <path d="M11.7 2.805a.75.75 0 01.6 0A60.65 60.65 0 0122.83 8.72a.75.75 0 01-.231 1.337 49.949 49.949 0 00-9.902 3.912l-.003.002-.34.18a.75.75 0 01-.707 0A50.009 50.009 0 001.73 10.057a.75.75 0 01-.231-1.337A60.653 60.653 0 0111.7 2.805z" />
+                    <path d="M13.06 15.473a48.45 48.45 0 017.666-3.282c.134 1.414.22 2.843.255 4.285a.75.75 0 01-.46.71 47.878 47.878 0 00-8.105 4.342.75.75 0 01-.832 0 47.877 47.877 0 00-8.104-4.342.75.75 0 01-.461-.71c.035-1.442.121-2.87.255-4.286A48.4 48.4 0 016 13.18v1.27a1.5 1.5 0 003 0v-1.27a48.4 48.4 0 014.06-1.007zM13.5 15.75a.75.75 0 00-1.5 0v3.75a.75.75 0 001.5 0V15.75z" />
+                  </svg>
+                  Education
+                </span>
+              </h2>
+              <p className="text-gray-600" data-aos="fade-up" data-aos-delay="100">
+                My academic journey and educational achievements
+              </p>
+            </div>
+
+            {/* Education Timeline - Bullet Style */}
+            <div className="max-w-4xl mx-auto">
+              {/* Education Item 1 */}
+              <div className="pl-10 relative mb-16" data-aos="fade-up" data-aos-delay="200">
+                {/* Bullet Point */}
+                <div className="absolute left-0 top-0 w-4 h-4 rounded-full bg-[#1518C6] mt-2"></div>
+                
+                {/* Vertical Line - Thinner and blue */}
+                <div className="absolute left-[7.5px] top-6 bottom-[-56px] w-0.5 bg-[#1518C6] rounded-full"></div>
+                
+                {/* Content */}
+                <h3 className="text-2xl font-bold mb-1">Software Engineering</h3>
+                <h4 className="text-xl font-semibold mb-2">Telkom University Purwokerto</h4>
+                
+                <div className="flex items-center text-sm text-gray-600 mb-4">
+                  <span className="flex items-center mr-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                    </svg>
+                    2022 - Present
+                  </span>
+                  <span className="flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                    </svg>
+                    Purwokerto, Indonesia
+                  </span>
+                </div>
+                
+                <p className="text-gray-700 mb-4">
+                  Studying software engineering with a focus on web and mobile development.
+                </p>
+                
+                <div className="mt-3">
+                  <h5 className="text-sm font-semibold mb-2 flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    ESSENTIAL ACTIVITIES
+                  </h5>
+                  <div className="flex flex-wrap gap-2">
+                    <span className="text-xs font-medium px-2.5 py-0.5 rounded bg-indigo-100 text-indigo-800">Bangkit Academy 2024 H2 Cloud Computing Cohort</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Education Item 2 */}
+              <div className="pl-10 relative" data-aos="fade-up" data-aos-delay="300">
+                {/* Bullet Point */}
+                <div className="absolute left-0 top-0 w-4 h-4 rounded-full bg-[#1518C6] mt-2"></div>
+                
+                {/* Connect line to second bullet point - ensure it's visible and connected */}
+                <div className="absolute left-[7.5px] top-[-56px] bottom-[-2px] w-0.5 bg-[#1518C6] rounded-full"></div>
+                
+                {/* Content */}
+                <h3 className="text-2xl font-bold mb-1">Computer & Network Engineering</h3>
+                <h4 className="text-xl font-semibold mb-2">SMK Telkom Jakarta</h4>
+                
+                <div className="flex items-center text-sm text-gray-600 mb-4">
+                  <span className="flex items-center mr-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                    </svg>
+                    2019 - 2022
+                  </span>
+                  <span className="flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                    </svg>
+                    Jakarta, Indonesia
+                  </span>
+                </div>
+                
+                <p className="text-gray-700 mb-4">
+                  Specialized in computer networking and system administration. Developed skills in network configuration, troubleshooting, and basic security practices.
+                </p>
+                
+                <div className="mt-3">
+                  <h5 className="text-sm font-semibold mb-2 flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    ESSENTIAL ACTIVITIES
+                  </h5>
+                  <div className="flex flex-wrap gap-2">
+                    <span className="text-xs font-medium px-2.5 py-0.5 rounded bg-indigo-100 text-indigo-800">InfraDigital Foundation Cybersecurity Bootcamp Participant</span>
+                    <span className="text-xs font-medium px-2.5 py-0.5 rounded bg-indigo-100 text-indigo-800">Cisco ITE Certified</span>
+                    <span className="text-xs font-medium px-2.5 py-0.5 rounded bg-indigo-100 text-indigo-800">Comptia Linux+ Certified</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Projects & Tools Section (Combined) */}
         <section id="projects" className="bg-gradient-to-br from-[#1518C6] to-[#6A5ACD] py-20">
           <div className="container mx-auto px-4">
             <div className="text-center mb-14" data-aos="fade-up">
-              <h2 className="text-4xl font-bold text-white mb-4">My Projects & Tools</h2>
+              <h2 className="text-4xl font-bold text-white mb-4">Tools & Projects</h2>
               <p className="text-white/80 max-w-2xl mx-auto mb-8">
                 Here are some tools i use and my recent projects that showcase my skills and experience in
                 web development.
@@ -668,7 +787,7 @@ export default function Portfolio() {
                   >
                     <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" viewBox="0 0 16 16">
                       <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z"/>
-                    </svg>
+                  </svg>
                   </a>
                   <a 
                     href="https://x.com/dimzkuyy_" 
