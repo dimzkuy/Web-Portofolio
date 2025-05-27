@@ -361,7 +361,8 @@ export default function Portfolio() {
                 <div className="p-6">
                   <h3 className="text-xl font-bold mb-2">Crop-Care Web</h3>
                   <p className="text-gray-600 mb-4">
-                    The project is called &quot;Crop-Care - Smart Crop Disease Detection Using Deep Learning and Cloud Computing.&quot;
+                    Crop-Care - Smart Crop Disease Detection using Deep Learning and Cloud Computing. This web application<br/>
+                    is the Capstone Project of Team C242-PR631 for the Bangkit 2024 H2.
                   </p>
                   <div className="flex flex-wrap gap-2 mb-6">
                     <span className="text-xs font-medium px-2.5 py-0.5 rounded bg-gray-100">Next.js</span>
@@ -621,7 +622,7 @@ export default function Portfolio() {
               <div>
                 <h3 className="text-xl font-bold mb-6">Dimas Cahyo Margono</h3>
                 <p className="text-white/80 leading-relaxed">
-                  Software engineering student passionate about cybersecurity and network system administration.
+                  Software Engineering Student with a Passionate about Cybersecurity and Network System Administration.
                 </p>
               </div>
               
@@ -642,8 +643,6 @@ export default function Portfolio() {
                 <ul className="space-y-4">
                   <li className="text-white/80">Web Development</li>
                   <li className="text-white/80">UI/UX Design</li>
-                  <li className="text-white/80">Network Administration</li>
-                  <li className="text-white/80">Cybersecurity</li>
                 </ul>
               </div>
               
