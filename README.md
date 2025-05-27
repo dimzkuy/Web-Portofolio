@@ -1,36 +1,90 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Web Portofolio
 
-## Getting Started
+Ini adalah proyek Web Portofolio pribadi yang menampilkan keahlian, tools, dan beberapa projek yang telah dikerjakan. Website ini dibuat menggunakan **Next.js**, dengan struktur modular dan asset yang tertata rapi.
 
-First, run the development server:
+---
+
+## 📁 Struktur File Proyek
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+root/                           # Direktori utama proyek
+├── lib/                        # Folder untuk helper atau utilitas
+│   └── utils.js               # File utilitas JavaScript
+├── public/                    # Folder publik untuk file statis
+│   └── assets/                # Asset statis yang digunakan
+│       ├── icons/             # Kumpulan icon teknologi dan tools
+│       │   ├── Bootstrap.svg
+│       │   ├── CSS.svg
+│       │   ├── D.png
+│       │   ├── Dart-Dark.svg
+│       │   ├── Debian-Dark.svg
+│       │   ├── Figma-Dark.svg
+│       │   ├── Flutter-Dark.svg
+│       │   ├── GCP-Dark.svg
+│       │   ├── Git.svg
+│       │   ├── HTML.svg
+│       │   ├── JavaScript.svg
+│       │   ├── NextJS-Dark.svg
+│       │   ├── NodeJS-Dark.svg
+│       │   ├── PHP-Dark.svg
+│       │   ├── Postman.svg
+│       │   ├── Python-Dark.svg
+│       │   ├── VSCode-Dark.svg
+│       │   └── icons8-instagram.svg
+│       ├── img/               # Folder gambar profil
+│       │   └── profile.jpg
+│       └── projects/          # Gambar proyek yang ditampilkan
+│           ├── Crop-Care.png
+│           ├── Workgank.png
+│           └── dana-redesign.png
+├── public/                    # File SVG tambahan dan favicon
+│   ├── file.svg
+│   ├── globe.svg
+│   ├── next.svg
+│   ├── vercel.svg
+│   └── window.svg
+├── src/                       # Sumber utama aplikasi (Next.js)
+│   ├── app/                   # Entry point dan layout aplikasi
+│   │   ├── favicon.ico        # Ikon web
+│   │   ├── globals.css        # File CSS global
+│   │   ├── layout.js          # Layout global
+│   │   └── page.js            # Halaman utama
+│   └── components/            # Komponen UI terpisah
+│       └── ui/                # Komponen UI khusus
+│           └── button.jsx     # Komponen tombol
+├── .gitignore                 # Mengabaikan file/folder saat push Git
+├── README.md                 # Dokumentasi proyek
+├── components.json            # Konfigurasi komponen
+├── eslint.config.mjs          # Konfigurasi ESLint
+├── jsconfig.json              # Konfigurasi path dan alias JS
+└── next.config.mjs            # Konfigurasi Next.js
 ```
+---
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## ▶️ Cara Menjalankan di Lokal
+1. Clone repositori
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+```bash
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+git clone https://github.com/dimzkuy/Web-Portofolio.git
+cd Web-Portofolio
+```
+2. Install dependencies
 
-## Learn More
+```bash
+npm install
+Jalankan development server
+```
+3. Jalankan Aplikasi
+```bash
+npm run dev
+```
+Buka browser dan akses http://localhost:3000
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## ✨ Teknologi yang Digunakan<br>
+**1. Next.js**<br>
+**2. Tailwind CSS**<br>
+**3. ShaCDN UI**
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
