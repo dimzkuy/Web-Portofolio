@@ -15,8 +15,6 @@ export default function Portfolio() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isMenuClosing, setIsMenuClosing] = useState(false);
   const [paddingTop, setPaddingTop] = useState(0);
-  const [scrollDirection, setScrollDirection] = useState("down");
-  const [lastScrollTop, setLastScrollTop] = useState(0);
   // Tambahkan state untuk mengelola status formulir
   const [formStatus, setFormStatus] = useState({
     submitted: false,
@@ -50,23 +48,7 @@ export default function Portfolio() {
   }, [charIndex, isDeleting, textIndex, texts]);
 
   useEffect(() => {
-    // Inisialisasi AOS dengan konfigurasi untuk mendukung scroll ke atas
-    AOS.init({ 
-      duration: 1000, 
-      once: false,     // Penting: ubah menjadi false agar animasi berulang
-      mirror: true,    // Penting: aktifkan mirror untuk animasi saat scroll up
-      anchorPlacement: 'top-bottom',
-      easing: 'ease-out-cubic',
-    });
-
-    // Re-initialize saat resize untuk memastikan semua elemen diukur dengan benar
-    window.addEventListener('resize', () => {
-      AOS.refresh();
-    });
-
-    return () => {
-      window.removeEventListener('resize', AOS.refresh);
-    };
+    AOS.init({ duration: 1000, once: true }); // Inisialisasi AOS
   }, []);
 
   // Tambahkan fungsi resetHome di dalam komponen Portfolio
@@ -161,32 +143,6 @@ export default function Portfolio() {
     }
   };
 
-  // Tambahkan fungsi ini dalam komponen Anda
-  const forceAOSRefreshOnScrollUp = () => {
-    // Cari semua elemen dengan data-aos yang terlihat di viewport
-    const elements = document.querySelectorAll('[data-aos]');
-    
-    elements.forEach(element => {
-      const rect = element.getBoundingClientRect();
-      const isVisible = 
-        rect.top <= window.innerHeight &&
-        rect.bottom >= 0;
-      
-      // Jika elemen terlihat di viewport dan scroll ke atas,
-      // kita perlu memaksa animasi dimulai ulang
-      if (isVisible) {
-        // Hapus dan tambahkan kembali class aos-animate untuk memulai animasi
-        element.classList.remove('aos-animate');
-        
-        // Tambahkan class aos-animate setelah reflow browser
-        setTimeout(() => {
-          element.classList.add('aos-animate');
-          element.classList.add('scroll-up-animate');
-        }, 10);
-      }
-    });
-  };
-
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#1518C6] to-[#6A5ACD] font-poppins">
       {/* Navigation - Fixed Position */}
@@ -196,7 +152,7 @@ export default function Portfolio() {
           <div className="flex justify-between items-center py-4">
             {/* Logo */}
             <div className="text-2xl font-bold" style={{ color: "#FFFFFF" }}>
-              My Portofolio
+              dimzkuy
             </div>
 
             {/* Navigation Links (Desktop) */}
@@ -358,7 +314,7 @@ export default function Portfolio() {
                 data-aos-delay="200"
               >
                 <p>
-                My name is Dimas,I am a student of Telkom University Purwokerto majoring in Software Engineering. I currently live in Purwokerto. I graduated from the Computer and Network Engineering study program at Telkom Vocational High School in Jakarta. I enjoy playing games and listening to music.
+                My name is Dimas Cahyo Margono. I am a student of Telkom University Purwokerto majoring in Software Engineering. I currently live in Purwokerto. I graduated from the Computer and Network Engineering study program at Telkom Vocational High School in Jakarta. I enjoy playing games and listening to music.
                 </p>
                 <p>
                 I have a slight interest in cybersecurity. When I was in vocational high school, I attended a bootcamp in collaboration with my school. That experience encouraged and motivated me to learn more about cybersecurity.
