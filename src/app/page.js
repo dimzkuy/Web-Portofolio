@@ -15,6 +15,14 @@ export default function Portfolio() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isMenuClosing, setIsMenuClosing] = useState(false);
   const [paddingTop, setPaddingTop] = useState(0);
+  const [scrollDirection, setScrollDirection] = useState("down");
+  const [lastScrollTop, setLastScrollTop] = useState(0);
+  // Tambahkan state untuk mengelola status formulir
+  const [formStatus, setFormStatus] = useState({
+    submitted: false,
+    success: false,
+    message: ''
+  });
   
   // Mengatur padding berdasarkan status menu
   useEffect(() => {
@@ -42,7 +50,23 @@ export default function Portfolio() {
   }, [charIndex, isDeleting, textIndex, texts]);
 
   useEffect(() => {
-    AOS.init({ duration: 1000, once: true }); // Inisialisasi AOS
+    // Inisialisasi AOS dengan konfigurasi untuk mendukung scroll ke atas
+    AOS.init({ 
+      duration: 1000, 
+      once: false,     // Penting: ubah menjadi false agar animasi berulang
+      mirror: true,    // Penting: aktifkan mirror untuk animasi saat scroll up
+      anchorPlacement: 'top-bottom',
+      easing: 'ease-out-cubic',
+    });
+
+    // Re-initialize saat resize untuk memastikan semua elemen diukur dengan benar
+    window.addEventListener('resize', () => {
+      AOS.refresh();
+    });
+
+    return () => {
+      window.removeEventListener('resize', AOS.refresh);
+    };
   }, []);
 
   // Tambahkan fungsi resetHome di dalam komponen Portfolio
@@ -72,6 +96,95 @@ export default function Portfolio() {
       setIsMenuClosing(false);
       setPaddingTop(0);
     }, 300);
+  };
+
+  // Tambahkan function handleSubmit untuk form
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    
+    const form = e.target;
+    const formData = new FormData(form);
+    
+    try {
+      // Menampilkan indikator loading
+      setFormStatus({
+        submitted: true,
+        success: false,
+        message: 'Sending message...'
+      });
+      
+      // Kirim data ke Formspree
+      const response = await fetch('https://formspree.io/f/movdgwgz', {
+        method: 'POST',
+        body: formData,
+        headers: {
+          Accept: 'application/json'
+        }
+      });
+      
+      if (response.ok) {
+        // Reset form dan tampilkan pesan sukses
+        form.reset();
+        setFormStatus({
+          submitted: true,
+          success: true,
+          message: 'Thank you! Your message has been sent successfully.'
+        });
+        
+        // Hilangkan pesan setelah 5 detik
+        setTimeout(() => {
+          setFormStatus({
+            submitted: false,
+            success: false,
+            message: ''
+          });
+        }, 5000);
+      } else {
+        throw new Error('Form submission failed');
+      }
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      setFormStatus({
+        submitted: true,
+        success: false,
+        message: 'Sorry, there was an error sending your message. Please try again.'
+      });
+      
+      // Hilangkan pesan error setelah 5 detik
+      setTimeout(() => {
+        setFormStatus({
+          submitted: false,
+          success: false,
+          message: ''
+        });
+      }, 5000);
+    }
+  };
+
+  // Tambahkan fungsi ini dalam komponen Anda
+  const forceAOSRefreshOnScrollUp = () => {
+    // Cari semua elemen dengan data-aos yang terlihat di viewport
+    const elements = document.querySelectorAll('[data-aos]');
+    
+    elements.forEach(element => {
+      const rect = element.getBoundingClientRect();
+      const isVisible = 
+        rect.top <= window.innerHeight &&
+        rect.bottom >= 0;
+      
+      // Jika elemen terlihat di viewport dan scroll ke atas,
+      // kita perlu memaksa animasi dimulai ulang
+      if (isVisible) {
+        // Hapus dan tambahkan kembali class aos-animate untuk memulai animasi
+        element.classList.remove('aos-animate');
+        
+        // Tambahkan class aos-animate setelah reflow browser
+        setTimeout(() => {
+          element.classList.add('aos-animate');
+          element.classList.add('scroll-up-animate');
+        }, 10);
+      }
+    });
   };
 
   return (
@@ -245,7 +358,7 @@ export default function Portfolio() {
                 data-aos-delay="200"
               >
                 <p>
-                I am a student of Telkom University Purwokerto majoring in Software Engineering. I currently live in Purwokerto. I graduated from the Computer and Network Engineering study program at Telkom Vocational High School in Jakarta. I enjoy playing games and listening to music.
+                My name is Dimas,I am a student of Telkom University Purwokerto majoring in Software Engineering. I currently live in Purwokerto. I graduated from the Computer and Network Engineering study program at Telkom Vocational High School in Jakarta. I enjoy playing games and listening to music.
                 </p>
                 <p>
                 I have a slight interest in cybersecurity. When I was in vocational high school, I attended a bootcamp in collaboration with my school. That experience encouraged and motivated me to learn more about cybersecurity.
@@ -617,11 +730,35 @@ export default function Portfolio() {
 
             {/* Contact Form */}
             <div
-              className="bg-[#F9FAFB] p-8 rounded-xl shadow-md max-w-xl mx-auto"
+              className="bg-[#F9FAFB] p-8 rounded-xl shadow-md max-w-xl mx-auto relative"
               data-aos="fade-up"
               data-aos-delay="200"
             >
-              <form action="https://formspree.io/f/movdgwgz" method="POST" className="space-y-4">
+              {/* Success/Error Popup */}
+              {formStatus.submitted && (
+                <div 
+                  className={`absolute top-0 left-0 right-0 p-4 text-center transform -translate-y-full rounded-t-lg shadow-md ${
+                    formStatus.success 
+                      ? 'bg-green-100 text-green-800 border-b-2 border-green-500'
+                      : 'bg-red-100 text-red-800 border-b-2 border-red-500'
+                  } transition-all duration-300`}
+                >
+                  <div className="flex items-center justify-center">
+                    {formStatus.success ? (
+                      <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                      </svg>
+                    ) : (
+                      <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      </svg>
+                    )}
+                    <p>{formStatus.message}</p>
+                  </div>
+                </div>
+              )}
+
+              <form onSubmit={handleSubmit} className="space-y-4">
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium text-gray-700">
                     Name
@@ -649,6 +786,19 @@ export default function Portfolio() {
                   />
                 </div>
                 <div>
+                  <label htmlFor="subject" className="block text-sm font-medium text-gray-700">
+                    Subject
+                  </label>
+                  <input
+                    type="text"
+                    name="subject"
+                    id="subject"
+                    required
+                    className="mt-1 block w-full px-4 py-2 border rounded-md focus:ring-[#1518C6] focus:border-[#1518C6]"
+                    placeholder="Subject of your message"
+                  />
+                </div>
+                <div>
                   <label htmlFor="message" className="block text-sm font-medium text-gray-700">
                     Message
                   </label>
@@ -664,9 +814,25 @@ export default function Portfolio() {
                 <div className="flex justify-center">
                   <button
                     type="submit"
-                    className="w-full bg-[#1518C6] text-white px-4 py-2 rounded-md font-semibold shadow-md hover:bg-[#6A5ACD] transition"
+                    disabled={formStatus.submitted && !formStatus.success}
+                    className="w-full flex items-center justify-center bg-[#1518C6] text-white px-4 py-2 rounded-md font-semibold shadow-md hover:bg-[#6A5ACD] transition-all duration-300 disabled:opacity-70"
                   >
-                    Send Message
+                    {formStatus.submitted && !formStatus.success ? (
+                      <>
+                        <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                          <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                          <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                        </svg>
+                        Sending...
+                      </>
+                    ) : (
+                      <>
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+                        </svg>
+                        Send Message
+                      </>
+                    )}
                   </button>
                 </div>
               </form>
