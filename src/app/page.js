@@ -398,12 +398,12 @@ export default function Portfolio() {
             <div className="text-center mb-14" data-aos="fade-up">
               <h2 className="text-4xl font-bold text-white mb-4">Tools & Projects</h2>
               <p className="text-white/80 max-w-2xl mx-auto mb-8">
-                Here are some tools i use and my recent projects that showcase my skills and experience in
+                Here are some tools I use and my recent projects that showcase my skills and experience in
                 web development.
               </p>
               
-              {/* Tools Scrolling Display */}
-              <div className="mb-16">
+              {/* Tech Stack Section */}
+              <div className="mb-24"> {/* Increased bottom margin from mb-16 to mb-24 */}
                 <h3 className="text-2xl font-bold text-white mb-8">Tech Stack</h3>
                 <div className="overflow-hidden" data-aos="fade-up" data-aos-delay="200">
                   <div
@@ -448,7 +448,11 @@ export default function Portfolio() {
                 </div>
               </div>
               
-              <h3 className="text-2xl font-bold text-white mb-8">Featured Projects</h3>
+              {/* Divider to create more space */}
+              <div className="w-16 h-1 bg-white/20 mx-auto mb-20 rounded-full"></div>
+              
+              {/* Projects Section Header with more spacing */}
+              <h3 className="text-2xl font-bold text-white mb-12 pt-4">Featured Projects</h3>
             </div>
 
             {/* Project Cards */}
@@ -462,7 +466,7 @@ export default function Portfolio() {
                 {/* Status Badge */}
                 <div className="absolute top-3 left-3 z-10">
                   <span className="px-3 py-1 text-xs font-medium bg-indigo-100 text-indigo-800 rounded-full">
-                    Bangkit 2024 H2 Capstone Project
+                    Bangkit Academy 2024 H2 Capstone Project
                   </span>
                 </div>
                 
@@ -481,7 +485,7 @@ export default function Portfolio() {
                   <h3 className="text-xl font-bold mb-2">Crop-Care Web</h3>
                   <p className="text-gray-600 mb-4">
                     Crop-Care - Smart Crop Disease Detection using Deep Learning and Cloud Computing. This web application<br/>
-                    is the Capstone Project of Team C242-PR631 for the Bangkit 2024 H2.
+                    is the Capstone Project of Team C242-PR631 for the Bangkit Academy 2024 H2.
                   </p>
                   <div className="flex flex-wrap gap-2 mb-6">
                     <span className="text-xs font-medium px-2.5 py-0.5 rounded bg-gray-100">Next.js</span>
@@ -617,7 +621,7 @@ export default function Portfolio() {
               data-aos="fade-up"
               data-aos-delay="200"
             >
-              <form action="https://formspree.io/f/mwkajgwl" method="POST" className="space-y-4">
+              <form action="https://formspree.io/f/movdgwgz" method="POST" className="space-y-4">
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium text-gray-700">
                     Name
