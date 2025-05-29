@@ -226,3 +226,191 @@ html {
 .logo-slider:hover .logo-slide-track {
   animation-play-state: paused;
 }
+
+/* Tambahkan CSS ini di akhir file globals.css */
+
+/* Animasi untuk logo navbar */
+.logo-hover {
+  position: relative;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  user-select: none;
+}
+
+.logo-hover:hover {
+  color: #FFFFFF;
+  text-shadow: 
+    0 0 8px rgba(255, 255, 255, 0.6),
+    0 0 16px rgba(255, 255, 255, 0.4),
+    0 0 24px rgba(255, 255, 255, 0.2);
+  transform: scale(1.08) translateY(-1px);
+}
+
+.logo-hover:active {
+  transform: scale(1.02) translateY(0px);
+  transition: all 0.1s ease;
+}
+
+/* Animasi typing effect */
+@keyframes typing-glow {
+  0%, 100% {
+    text-shadow: 
+      0 0 5px rgba(255, 255, 255, 0.5),
+      0 0 10px rgba(255, 255, 255, 0.3);
+  }
+  50% {
+    text-shadow: 
+      0 0 10px rgba(255, 255, 255, 0.8),
+      0 0 20px rgba(255, 255, 255, 0.5),
+      0 0 30px rgba(255, 255, 255, 0.3);
+  }
+}
+
+/* Efek rainbow gradient saat hover */
+.logo-rainbow:hover {
+  background: linear-gradient(
+    45deg,
+    #ff6b6b,
+    #4ecdc4,
+    #45b7d1,
+    #96ceb4,
+    #feca57,
+    #ff9ff3,
+    #54a0ff
+  );
+  background-size: 200% 200%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  animation: rainbow-move 2s ease infinite;
+}
+
+@keyframes rainbow-move {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Efek bounce dengan shadow */
+.logo-bounce:hover {
+  animation: bounce-shadow 0.6s ease;
+}
+
+@keyframes bounce-shadow {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+    text-shadow: 0 0 0 rgba(255, 255, 255, 0);
+  }
+  25% {
+    transform: translateY(-5px) scale(1.02);
+    text-shadow: 0 5px 10px rgba(255, 255, 255, 0.2);
+  }
+  50% {
+    transform: translateY(-8px) scale(1.05);
+    text-shadow: 0 8px 15px rgba(255, 255, 255, 0.3);
+  }
+  75% {
+    transform: translateY(-3px) scale(1.02);
+    text-shadow: 0 3px 8px rgba(255, 255, 255, 0.2);
+  }
+}
+
+/* Efek glitch */
+.logo-glitch:hover {
+  animation: glitch 0.5s ease-in-out;
+}
+
+@keyframes glitch {
+  0%, 100% {
+    transform: translate(0);
+  }
+  10% {
+    transform: translate(-2px, 2px);
+  }
+  20% {
+    transform: translate(2px, -2px);
+  }
+  30% {
+    transform: translate(-2px, -2px);
+  }
+  40% {
+    transform: translate(2px, 2px);
+  }
+  50% {
+    transform: translate(-2px, 2px);
+  }
+  60% {
+    transform: translate(2px, -2px);
+  }
+  70% {
+    transform: translate(-2px, -2px);
+  }
+  80% {
+    transform: translate(2px, 2px);
+  }
+  90% {
+    transform: translate(-2px, 2px);
+  }
+}
+
+/* Efek wave dengan gradient */
+.logo-wave:hover {
+  background: linear-gradient(
+    90deg,
+    #1518C6,
+    #6A5ACD,
+    #FFFFFF,
+    #6A5ACD,
+    #1518C6
+  );
+  background-size: 200% 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  animation: wave-gradient 1.5s ease infinite;
+}
+
+@keyframes wave-gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Efek neon pulse */
+.logo-neon:hover {
+  color: #FFFFFF;
+  animation: neon-pulse 1s ease-in-out infinite alternate;
+}
+
+@keyframes neon-pulse {
+  from {
+    text-shadow: 
+      0 0 5px #FFFFFF,
+      0 0 10px #FFFFFF,
+      0 0 15px #1518C6,
+      0 0 20px #1518C6,
+      0 0 35px #1518C6,
+      0 0 40px #1518C6;
+  }
+  to {
+    text-shadow: 
+      0 0 2px #FFFFFF,
+      0 0 5px #FFFFFF,
+      0 0 8px #1518C6,
+      0 0 12px #1518C6,
+      0 0 18px #1518C6,
+      0 0 25px #1518C6;
+  }
+}
