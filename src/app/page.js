@@ -50,29 +50,15 @@ export default function Portfolio() {
   }, [charIndex, isDeleting, textIndex, texts]);
 
   useEffect(() => {
-    // Inisialisasi AOS dengan konfigurasi anti-collision
+    // Inisialisasi AOS dengan konfigurasi untuk mendukung scroll ke atas
     AOS.init({ 
-      duration: 800, 
-      once: false,     // Penting: false agar animasi berulang
+      duration: 1000, 
+      once: false,     // Penting: ubah menjadi false agar animasi berulang
       mirror: true,    // Penting: aktifkan mirror untuk animasi saat scroll up
       anchorPlacement: 'top-bottom',
       easing: 'ease-out-cubic',
-      offset: 150,     // Offset lebih besar untuk mencegah collision
-      disable: false,
-      throttleDelay: 99, // Throttle untuk performa
-      debounceDelay: 50, // Debounce untuk mencegah collision
+      offset: 120,
     });
-
-    // Re-initialize saat resize
-    const handleResize = () => {
-      AOS.refresh();
-    };
-    
-    window.addEventListener('resize', handleResize);
-
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
   }, []);
 
   // Tambahkan fungsi resetHome di dalam komponen Portfolio
@@ -167,51 +153,25 @@ export default function Portfolio() {
     }
   };
 
-  // Tambahkan fungsi ini setelah handleSubmit
-
-  const refreshVisibleAOSElements = () => {
-    const elements = document.querySelectorAll('[data-aos]');
-    
-    elements.forEach(element => {
-      const rect = element.getBoundingClientRect();
-      const isVisible = 
-        rect.top >= -100 && 
-        rect.bottom <= window.innerHeight + 100;
-      
-      if (isVisible) {
-        // Reset animasi
-        element.classList.remove('aos-animate');
-        
-        // Paksa reflow
-        void element.offsetWidth;
-        
-        // Tambahkan kembali animasi setelah delay kecil
-        setTimeout(() => {
-          element.classList.add('aos-animate');
-        }, 50);
-      }
-    });
-  };
-
   useEffect(() => {
     let ticking = false;
-    let scrollTimer = null;
     
     const handleScroll = () => {
       if (!ticking) {
         requestAnimationFrame(() => {
           const currentScrollTop = window.pageYOffset || document.documentElement.scrollTop;
           
-          // Clear previous timer
-          if (scrollTimer) {
-            clearTimeout(scrollTimer);
-          }
-          
           // Deteksi arah scroll
           if (currentScrollTop > lastScrollTop) {
             // Scroll ke bawah
             setScrollDirection("down");
-           
+            document.body.classList.remove('scroll-up');
+            document.body.classList.add('scroll-down');
+          } else if (currentScrollTop < lastScrollTop) {
+            // Scroll ke atas
+            setScrollDirection("up");
+            document.body.classList.remove('scroll-down');
+            document.body.classList.add('scroll-up');
             
             // Refresh AOS untuk elemen yang terlihat saat scroll ke atas
             refreshVisibleAOSElements();
@@ -231,48 +191,6 @@ export default function Portfolio() {
     };
   }, [lastScrollTop]);
 
-  // Tambahkan useEffect ini setelah useEffect scroll detection
-
-  useEffect(() => {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        const element = entry.target;
-        
-        if (entry.isIntersecting) {
-          // Jika elemen masuk viewport
-          if (scrollDirection === "up") {
-            // Khusus untuk scroll ke atas, reset dan animate ulang
-            element.classList.remove('aos-animate');
-            setTimeout(() => {
-              element.classList.add('aos-animate');
-            }, 50);
-          } else {
-            // Scroll ke bawah normal
-            element.classList.add('aos-animate');
-          }
-        } else {
-          // Jika elemen keluar viewport dan scroll ke atas, reset
-          if (scrollDirection === "up" && !entry.isIntersecting) {
-            element.classList.remove('aos-animate');
-          }
-        }
-      });
-    }, {
-      rootMargin: '-10% 0% -10% 0%', // Memberikan margin untuk mencegah collision
-      threshold: [0.1, 0.5, 0.9] // Multiple threshold untuk deteksi yang lebih akurat
-    });
-    
-    // Observe semua elemen dengan data-aos
-    const aosElements = document.querySelectorAll('[data-aos]');
-    aosElements.forEach(element => {
-      observer.observe(element);
-    });
-    
-    return () => {
-      observer.disconnect();
-    };
-  }, [scrollDirection]);
-
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#1518C6] to-[#6A5ACD] font-poppins">
       {/* Navigation - Fixed Position */}
@@ -283,10 +201,10 @@ export default function Portfolio() {
             {/* Logo */}
             <div 
   className="text-2xl font-bold logo-hover" 
-  style={{ color: "#FFFFFF" }}
-  onClick={() => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }}
+              style={{ color: "#FFFFFF" }}
+              onClick={() => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }}
 >
   dimzkuy
 </div>
@@ -830,25 +748,40 @@ export default function Portfolio() {
               {formStatus.submitted && (
                 <div 
                   className={`absolute top-0 left-0 right-0 p-4 text-center transform -translate-y-full rounded-t-lg shadow-md ${
-                    formStatus.success ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'
-                  }`}
+                    formStatus.success 
+                      ? 'bg-green-100 text-green-800 border-b-2 border-green-500'
+                      : 'bg-red-100 text-red-800 border-b-2 border-red-500'
+                  } transition-all duration-300`}
                 >
-                  {formStatus.success ? (
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 inline-block mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 6a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                  ) : (
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 inline-block mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                    </svg>
-                  )}
-                  <p className="text-sm font-medium">
-                    {formStatus.message}
-                  </p>
+                  <div className="flex items-center justify-center">
+                    {formStatus.success ? (
+                      <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                      </svg>
+                    ) : (
+                      <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      </svg>
+                    )}
+                    <p>{formStatus.message}</p>
+                  </div>
                 </div>
               )}
-              
-              <form onSubmit={handleSubmit}>
+
+              <form onSubmit={handleSubmit} className="space-y-4">
+                <div>
+                  <label htmlFor="name" className="block text-sm font-medium text-gray-700">
+                    Name
+                  </label>
+                  <input
+                    type="text"
+                    name="name"
+                    id="name"
+                    required
+                    className="mt-1 block w-full px-4 py-2 border rounded-md focus:ring-[#1518C6] focus:border-[#1518C6]"
+                    placeholder="Your Name"
+                  />
+                </div>
                 <div>
                   <label htmlFor="email" className="block text-sm font-medium text-gray-700">
                     Email
