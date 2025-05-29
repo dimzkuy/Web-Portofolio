@@ -50,31 +50,28 @@ export default function Portfolio() {
   }, [charIndex, isDeleting, textIndex, texts]);
 
   useEffect(() => {
-    // Inisialisasi AOS dengan konfigurasi untuk mendukung scroll ke atas
+    // Inisialisasi AOS dengan konfigurasi standar
     AOS.init({ 
       duration: 1000, 
-      once: false,     // Penting: ubah menjadi false agar animasi berulang
-      mirror: true,    // Penting: aktifkan mirror untuk animasi saat scroll up
+      once: true,     // Animasi hanya sekali
+      mirror: false,  // Tanpa mirror
       anchorPlacement: 'top-bottom',
-      easing: 'ease-out-cubic',
+      easing: 'ease-out-quart',
       offset: 120,
     });
   }, []);
 
-  // Tambahkan fungsi resetHome di dalam komponen Portfolio
+  // Fungsi resetHome yang disederhanakan
   const resetHome = () => {
-    // Reset state typing animation
     setTextIndex(0);
     setCharIndex(0);
     setIsDeleting(false);
     
-    // Scroll ke posisi paling atas dengan smooth animation
     window.scrollTo({
       top: 0,
       behavior: 'smooth'
     });
     
-    // Optional: Re-trigger AOS animations
     setTimeout(() => {
       AOS.refresh();
     }, 500);
@@ -153,6 +150,7 @@ export default function Portfolio() {
     }
   };
 
+  // useEffect scroll yang disederhanakan
   useEffect(() => {
     let ticking = false;
     
@@ -161,20 +159,10 @@ export default function Portfolio() {
         requestAnimationFrame(() => {
           const currentScrollTop = window.pageYOffset || document.documentElement.scrollTop;
           
-          // Deteksi arah scroll
           if (currentScrollTop > lastScrollTop) {
-            // Scroll ke bawah
             setScrollDirection("down");
-            document.body.classList.remove('scroll-up');
-            document.body.classList.add('scroll-down');
           } else if (currentScrollTop < lastScrollTop) {
-            // Scroll ke atas
             setScrollDirection("up");
-            document.body.classList.remove('scroll-down');
-            document.body.classList.add('scroll-up');
-            
-            // Refresh AOS untuk elemen yang terlihat saat scroll ke atas
-            refreshVisibleAOSElements();
           }
           
           setLastScrollTop(currentScrollTop <= 0 ? 0 : currentScrollTop);
